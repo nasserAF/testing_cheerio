@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- UIkit CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/css/uikit.min.css" />
+
+  <!-- UIkit JS -->
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit-icons.min.js"></script>
+    <style>
+        *
+        {
+            direction: rtl;
+        }
+        table {
+            width: 100%;
+        }
+        
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+        }
+        
+        #t01 tr:nth-child(even) {
+            background-color: #eee;
+        }
+        
+        #t01 tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        
+        #t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+<div class="uk-card uk-card-default uk-width-1-1@m">
+    <div class="uk-card-header">
+        <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-auto">
+                <!--<img class="uk-border-circle" width="40" height="40" src="images/avatar.jpg">-->
+            </div>
+            <div class="uk-width-expand">
+                <h3 id='pstTitle' class="uk-card-title uk-margin-remove-bottom"></h3>
+                <p id='pstURL' class="uk-text-meta uk-margin-remove-top"></p>
+            </div>
+        </div>
+    </div>
+    <div class="uk-card-body">
+        <p id="pstDetails" class='pstDetailsClass'></p>
+    </div>
+    <div class="uk-card-footer">
+        <a href="#" class="uk-button uk-button-text">Read more</a>
+    </div>
+</div>
+    
+    
+    
+    
+
+
+
+
+
+    
+
+
+
+    
+    <script>
+        let url1 = 'https://raw.githubusercontent.com/nasserAF/postsDetails/main/postsDetails.json'
+        fetch(url1)
+            .then(res => res.json())
+            .then(data => {
+                //console.log(data)
+                var output = '';
+                for (var i = 0; i < data.length; i++) {
+                    pstTitle += data[i].title;
+                    pstDetails += data[i].details;
+                    pstURL += data[i].url;
+                }
+                document.getElementById('pstDetails').innerHTML = pstDetails;
+                document.getElementById('pstTitle').innerHTML = pstTitle;
+                document.getElementById('pstURL').innerHTML = pstURL;
+            
+            })
+    </script>
+
+    
+    
+    
+
+</body>
+
+</html>
